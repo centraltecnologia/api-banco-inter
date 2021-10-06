@@ -1,0 +1,50 @@
+version: '3.7'
+
+networks:
+  backend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "192.168.177.0/24"
+
+volumes:
+  data-abi:
+
+services:
+  composer:
+    image: composer:latest
+    environment:
+      - COMPOSER_CACHE_DIR=/app/var/cache/composer
+    volumes:
+      - .:/app
+    restart: never
+    networks:
+      backend:
+        ipv4_address: 192.168.177.13
+  cli:
+    image: php:8
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+    networks:
+      backend:
+        ipv4_address: 192.168.177.12
+  pest:
+    image: php:8
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: vendor/bin/pest
+    networks:
+      backend:
+        ipv4_address: 192.168.177.11
+  fpm:
+    image: php:8
+    restart: always
+    volumes:
+      - .:/app
+    networks:
+      backend:
+        ipv4_address: 192.168.177.10

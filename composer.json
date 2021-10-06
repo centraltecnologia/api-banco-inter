@@ -1,0 +1,24 @@
+{
+    "name": "rpmeir/api-banco-inter",
+    "description": "API Boletos Banco Inter (Nao Oficial)",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Rpmeir\\ApiBancoInter\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rodrigo Pires Meira",
+            "email": "rpmeir@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "pestphp/pest": "^1.20"
+    },
+    "require": {
+        "react/http": "^1.5"
+    }
+}
