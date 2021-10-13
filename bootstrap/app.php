@@ -112,4 +112,11 @@ $app->router->group([
     require __DIR__.'/../routes/web.php';
 });
 
+$app->router->group([
+    'namespace' => 'App\Http\Controllers',
+    'prefix' => 'openbanking/v1/certificado',
+], function ($router) {
+    require __DIR__.'/../routes/boletos.php';
+});
+
 return $app;
